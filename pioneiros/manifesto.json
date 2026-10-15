@@ -1,0 +1,29 @@
+{
+  "name": "Amarra | Comunidade AG20 Covilhã",
+  "short_name": "Amarra",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#2A5977",
+  "theme_color": "#2A5977",
+  "icons": [
+    {
+      "src": "amarra-180-v3.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "icone.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icone.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
