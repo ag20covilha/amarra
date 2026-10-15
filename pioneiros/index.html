@@ -93,10 +93,20 @@
      gerado pelo atalho-site.js). Fechada: a página «em breve», que volta para
      aqui sozinha quando abrir. Sem resposta: abre na mesma — quem guarda a
      porta é o servidor, não esta página. */
-  if (window.AmarraEstado) AmarraEstado.perguntar(endereco, function (aberta) {
+  /* OS DIRIGENTES ENTRAM SEMPRE — 15-10-2026. Com a app só para dirigentes,
+     a página «em breve» tem «Dirigente da secção? Entrar →» (./?dirigente).
+     Fica lembrado neste browser (ou neste ícone do ecrã principal, que no iOS
+     tem a sua própria memória): o mesmo link passa a abrir a app. Não é uma
+     porta: um elemento que carregue ali chega à app e é barrado por ela. */
+  var chave = 'amarra-dirigente:' + location.pathname, dirigente = /[?&]dirigente\b/.test(location.search);
+  try {
+    if (dirigente) { localStorage.setItem(chave, '1'); history.replaceState(null, '', location.pathname); }
+    else dirigente = localStorage.getItem(chave) === '1';
+  } catch (err) {}
+  if (dirigente || !window.AmarraEstado) arrancar();
+  else AmarraEstado.perguntar(endereco, function (aberta) {
     if (aberta === false) location.replace('em-breve.html'); else arrancar();
   });
-  else arrancar();
 </script>
 </body>
 </html>
